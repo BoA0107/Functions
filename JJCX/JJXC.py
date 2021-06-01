@@ -20,9 +20,9 @@ def show():
         if num == '1':
             info_f()
         elif num == '2':
-            pass
+            add_f()
         elif num == '3':
-            pass
+            del_f()
         elif num.lower() == 'q':
             sys.exit()
         else:
@@ -34,7 +34,7 @@ def info_f():
         print('基金代码\t\t', '基金名称\t\t', '昨日净值\t', '今日估值\t', '今日涨幅')
         print('-' * 60)
         for c in codes:
-            get_f(c)
+            do_info(c)
         print('-' * 60)
         x = input("\t\t\t输入h返回首页，其他键重新查询：")
         if x.lower() == 'h':
@@ -43,7 +43,7 @@ def info_f():
             sys.exit()
 
 
-def get_f(code):
+def do_info(code):
     url = u + code + '.js'
     req = requests.get(url)
     if req.status_code == 200:
@@ -59,18 +59,40 @@ def get_f(code):
 
 
 def add_f():
-    pass
-
-def add_do():
-    pass
+    code = input("\t\t\t\t输入代码或h：")
+    while True:
+        if code.lower() == 'h':
+            show()
+        elif code.lower() == 'q':
+            sys.exit()
+        elif code in codes:
+            code = input('\t\t\t\t代码已存在，输入新代码或h返回首页：')
+        else:
+            x = check_code(code)
+            if x == False:
+                code = input('\t\t\t\t输入不正确，输入新代码或h返回首页：')
+            else:
+                codes.append(code)
+                with open(filename, 'a') as file:
+                    file.write(code + '\n')
+                code = input('\t\t\t\t保存成功，继续添加或h返回首页：')
 
 
 def del_f():
-    pass
-
-
-def save_f():
-    pass
+    while True:
+        if len(codes) == 0:
+            print("当前无基金代码保存。")
+            show()
+        else:
+            print("现存基金数目：" + str(len(codes)))
+            for i in range(len(codes)):
+                print(i + 1, codes[i])
+            x = input("输入要删除的序号或h返回首页：")
+            if x.lower()=='h':
+                show()
+            elif x.lower()=='q':
+                sys.exit()
+            #elif x not in list()
 
 
 def check_code(num):
