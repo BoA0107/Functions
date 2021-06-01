@@ -59,8 +59,12 @@ def do_info(code):
 
 
 def add_f():
-    code = input("\t\t\t\t输入代码或h：")
     while True:
+        print("现存基金数目：" + str(len(codes)))
+        for i in range(len(codes)):
+            print(i + 1, codes[i])
+        code = input("\t\t\t\t输入代码或h：")
+
         if code.lower() == 'h':
             show()
         elif code.lower() == 'q':
@@ -73,9 +77,10 @@ def add_f():
                 code = input('\t\t\t\t输入不正确，输入新代码或h返回首页：')
             else:
                 codes.append(code)
+                codes.sort()
                 with open(filename, 'a') as file:
                     file.write(code + '\n')
-                code = input('\t\t\t\t保存成功，继续添加或h返回首页：')
+                # code = input('\t\t\t\t保存成功，继续添加或h返回首页：')
 
 
 def del_f():
@@ -85,13 +90,25 @@ def del_f():
             show()
         else:
             print("现存基金数目：" + str(len(codes)))
+            z=[]
             for i in range(len(codes)):
                 print(i + 1, codes[i])
+                z.append(str(i+1))
             x = input("输入要删除的序号或h返回首页：")
             if x.lower()=='h':
                 show()
             elif x.lower()=='q':
                 sys.exit()
+            elif x in z:
+                del codes[int(x)-1]
+                file = open(filename,'w')
+                for c in codes:
+                    file.write(c+'\n')
+                file.close()
+                print("删除成功：")
+            else:
+                x = input("输入错误,重新输入或按h返回首页：")
+
 
 
 def check_code(num):
