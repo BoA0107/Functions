@@ -92,7 +92,8 @@ def del_f():
                 show()
             elif x.lower()=='q':
                 sys.exit()
-            #elif x not in list()
+            elif type(int(x))==False:
+                print('aa')
 
 
 def check_code(num):
