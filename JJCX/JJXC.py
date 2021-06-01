@@ -4,18 +4,21 @@ import requests
 
 
 def show():
-    print('\t\t\t基金查询')
-    print('-' * 40)
-    print('\t\t\t1. 基金查询')
-    print('\t\t\t2. 基金添加')
-    print('\t\t\t3. 基金删除')
-    print('\t\t\tq. 退出系统')
-    print('-' * 40)
-    num = input('\t\t\t输入编号：')
+    print('\t\t\t\t基金查询')
+    print('-' * 60)
+    print('\t\t\t\t1. 基金查询')
+    print('\t\t\t\t2. 基金添加')
+    print('\t\t\t\t3. 基金删除')
+    print('\t\t\t\tq. 退出系统')
+    print('-' * 60)
+    print()
+    num = input('\t\t\t\t输入编号：')
+    print()
+    print('-' * 60)
 
     while True:
         if num == '1':
-            pass
+            info_f()
         elif num == '2':
             pass
         elif num == '3':
@@ -23,12 +26,21 @@ def show():
         elif num.lower() == 'q':
             sys.exit()
         else:
-            num = input('\t\t\t输入错误，请重新输入：')
+            num = input('\t\t\t\t输入错误，请重新输入：')
 
 
 def info_f():
-    for c in codes:
-        get_f(c)
+    while True:
+        print('基金代码\t\t', '基金名称\t\t', '昨日净值\t', '今日估值\t', '今日涨幅')
+        print('-' * 60)
+        for c in codes:
+            get_f(c)
+        print('-' * 60)
+        x = input("\t\t\t输入h返回首页，其他键重新查询：")
+        if x.lower() == 'h':
+            show()
+        elif x.lower() == 'q':
+            sys.exit()
 
 
 def get_f(code):
@@ -41,11 +53,15 @@ def get_f(code):
         for i in info:
             x, y = i.split(':')
             dct[x.strip('"')] = y.strip('"')
-        print ("{0:10} {1:10} {2:10} {3:10} {4:10}".format(dct['fundcode'], dct['name'][:6], dct['dwjz'], dct['gsz'],
-                                         dct['gszzl']))
+        print("{0}\t\t {1:6}\t\t {2}\t\t {3}\t\t {4}\t\t".format(dct['fundcode'], dct['name'][:6], dct['dwjz'],
+                                                                 dct['gsz'],
+                                                                 dct['gszzl']))
 
 
 def add_f():
+    pass
+
+def add_do():
     pass
 
 
@@ -94,6 +110,4 @@ if __name__ == "__main__":
     filename = r'code.txt'
     codes = open_file()
 
-    # show()
-
-    info_f()
+    show()
