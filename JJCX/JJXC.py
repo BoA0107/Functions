@@ -4,17 +4,17 @@ import requests
 
 
 def show():
-    print('\t\t\t\t\t基金查询')
-    print('-' * 60)
-    print('\t\t\t\t\t1. 基金查询')
-    print('\t\t\t\t\t2. 基金添加')
-    print('\t\t\t\t\t3. 基金删除')
-    print('\t\t\t\t\tq. 退出系统')
-    print('-' * 60)
+    print('\t\t\t\t基金查询')
+    print('-' * 80)
+    print('\t\t\t\t1. 基金查询')
+    print('\t\t\t\t2. 基金添加')
+    print('\t\t\t\t3. 基金删除')
+    print('\t\t\t\tq. 退出系统')
+    print('-' * 80)
     print()
     num = input('输入编号：')
     print()
-    print('-' * 60)
+    print('-' * 80)
 
     while True:
         if num == '1':
@@ -31,11 +31,11 @@ def show():
 
 def info_f():
     while True:
-        print('基金代码\t\t', '基金名称\t\t', '昨日净值\t', '今日估值\t', '今日涨幅')
-        print('-' * 60)
+        print('基金代码\t', '基金名称\t\t', '昨日净值\t', '今日估值\t', '今日涨幅')
+        print('-' * 80)
         for c in codes:
             do_info(c)
-        print('-' * 60)
+        print('-' * 80)
         x = input("输入h返回首页，其他键重新查询：")
         if x.lower() == 'h':
             show()
