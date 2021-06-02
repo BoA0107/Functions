@@ -4,12 +4,12 @@ import requests
 
 
 def show():
-    print('\t\t\t\t基金查询')
+    print('\t\t\t\t\t基金查询')
     print('-' * 60)
-    print('\t\t\t\t1. 基金查询')
-    print('\t\t\t\t2. 基金添加')
-    print('\t\t\t\t3. 基金删除')
-    print('\t\t\t\tq. 退出系统')
+    print('\t\t\t\t\t1. 基金查询')
+    print('\t\t\t\t\t2. 基金添加')
+    print('\t\t\t\t\t3. 基金删除')
+    print('\t\t\t\t\tq. 退出系统')
     print('-' * 60)
     print()
     num = input('输入编号：')
