@@ -12,7 +12,7 @@ def show():
     print('\t\t\t\tq. 退出系统')
     print('-' * 60)
     print()
-    num = input('\t\t\t\t输入编号：')
+    num = input('输入编号：')
     print()
     print('-' * 60)
 
@@ -26,7 +26,7 @@ def show():
         elif num.lower() == 'q':
             sys.exit()
         else:
-            num = input('\t\t\t\t输入错误，请重新输入：')
+            num = input('输入错误，请重新输入：')
 
 
 def info_f():
@@ -36,7 +36,7 @@ def info_f():
         for c in codes:
             do_info(c)
         print('-' * 60)
-        x = input("\t\t\t输入h返回首页，其他键重新查询：")
+        x = input("输入h返回首页，其他键重新查询：")
         if x.lower() == 'h':
             show()
         elif x.lower() == 'q':
@@ -63,18 +63,18 @@ def add_f():
         print("现存基金数目：" + str(len(codes)))
         for i in range(len(codes)):
             print(i + 1, codes[i])
-        code = input("\t\t\t\t输入代码或h：")
+        code = input("输入代码或h：")
 
         if code.lower() == 'h':
             show()
         elif code.lower() == 'q':
             sys.exit()
         elif code in codes:
-            code = input('\t\t\t\t代码已存在，输入新代码或h返回首页：')
+            code = input('代码已存在，输入新代码或h返回首页：')
         else:
             x = check_code(code)
             if x == False:
-                code = input('\t\t\t\t输入不正确，输入新代码或h返回首页：')
+                code = input('输入不正确，输入新代码或h返回首页：')
             else:
                 codes.append(code)
                 codes.sort()
